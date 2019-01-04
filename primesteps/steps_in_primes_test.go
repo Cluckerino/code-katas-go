@@ -20,6 +20,11 @@ var kataExamples = []TestData{
 	{10, 300, 400, []int{307, 317}},
 }
 
+var oneGapTests = []TestData{
+	{1, 0, 4, []int{2, 3}},
+	{1, 10, 30, []int(nil)},
+}
+
 func ExecuteTest(t *testing.T, data TestData) {
 	actual, expected := primesteps.Step(data.g, data.m, data.n), data.expected
 	assert.Equal(t, expected, actual)
@@ -40,5 +45,18 @@ func TestStepOddGap(t *testing.T) {
 // Test range min == range max
 func TestStepZeroRange(t *testing.T) {
 	actual, expected := primesteps.Step(10, 30000, 30000), []int(nil)
+	assert.Equal(t, expected, actual)
+}
+
+// Test gap = 1
+func TestStepGapIsOne(t *testing.T) {
+	for _, td := range oneGapTests {
+		ExecuteTest(t, td)
+	}
+}
+
+// Test empty result
+func TestStepValidInputsNoResult(t *testing.T) {
+	actual, expected := primesteps.Step(10, 100, 112), []int(nil)
 	assert.Equal(t, expected, actual)
 }

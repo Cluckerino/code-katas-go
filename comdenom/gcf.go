@@ -1,6 +1,6 @@
 package comdenom
 
-// Gcd gets the gcd of 2 numbers using the Euler algorithm
+// Gcf gets the GCF of 2 numbers using the Euler algorithm
 func Gcd(a, b int) int {
 	if b == 0 {
 		return a

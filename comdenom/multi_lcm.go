@@ -4,7 +4,7 @@ package comdenom
 func MultiLcm(nums []int) int {
 	lastLcm := nums[0]
 	for _, num := range nums[1:] {
-		lastLcm = lastLcm * num / Gcd(lastLcm, num)
+		lastLcm = lastLcm * num / Gcf(lastLcm, num)
 	}
 	return lastLcm
 }
